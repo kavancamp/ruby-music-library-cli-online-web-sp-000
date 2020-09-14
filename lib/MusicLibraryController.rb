@@ -31,10 +31,15 @@ class MusicLibraryController
       list_songs_by_genre
     when "play song"
       play_song
+      end
     end
   end
-end
 
+  def list_songs
+    Song.all.sort{|a, b| a.name <=> b.name}.each_with_index do |s, i|
+      puts "#{i+1}. #{s.artist.name} - #{s.name} - #{s.genre.name}"
+    end
+  end
 
 
 
